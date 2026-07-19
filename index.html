@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BiRAGAS — The Bioinformatics Help Companion</title>
+<meta name="description" content="An illustrated, narrated Q&A companion: 51 real bioinformatics questions across 16 themes, and how the BiRAGAS causal-AI platform answers them.">
+<meta property="og:title" content="BiRAGAS — The Bioinformatics Help Companion">
+<meta property="og:description" content="51 real RNA-seq & bioinformatics questions, 16 themes, one causal engine. Watch the film, download the booklet.">
+<meta property="og:image" content="poster.jpg">
+<meta property="og:type" content="video.other">
+<style>
+:root{--cream:#F4EFE7;--ink:#1A1614;--red:#C8102E;--gold:#C5A572;--gray:#6B6459;--tint:#EBE3D5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+header{padding:44px 0 8px;text-align:center}
+.kicker{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:.28em;color:var(--red);font-size:12px;text-transform:uppercase}
+.rule{width:46px;height:4px;background:var(--red);margin:0 auto 16px}
+h1{font-size:clamp(30px,5vw,50px);margin:.15em 0 .1em;letter-spacing:-.01em}
+.sub{font-style:italic;color:var(--gray);font-size:clamp(16px,2.4vw,21px);margin:0}
+.tagline{font-family:Arial,sans-serif;color:var(--red);font-size:13px;letter-spacing:.04em;margin-top:8px}
+.videobox{margin:30px 0 10px;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(26,22,20,.22);background:#000}
+video{width:100%;display:block}
+.actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:22px 0 6px}
+.btn{font-family:Arial,sans-serif;font-weight:700;font-size:15px;text-decoration:none;padding:13px 22px;border-radius:10px;display:inline-flex;align-items:center;gap:9px;transition:.15s}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#a50d26}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--gold)}.btn-ghost:hover{background:var(--tint)}
+.lead{font-size:19px;margin:34px auto 8px;max-width:760px;text-align:center}
+.goldline{height:1px;background:var(--gold);margin:34px 0}
+h2{font-size:26px;text-align:center;margin:8px 0 6px}
+.h2sub{font-family:Arial,sans-serif;color:var(--gray);text-align:center;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.card{background:#fff;border:1px solid var(--tint);border-radius:11px;padding:14px 16px}
+.card .n{font-family:Arial,sans-serif;font-weight:700;color:var(--red);font-size:12px;letter-spacing:.05em}
+.card .t{font-size:16px;margin-top:3px}
+.who{background:var(--tint);border-radius:14px;padding:22px 24px;margin:8px 0;text-align:center;font-size:16px}
+.stats{display:flex;justify-content:center;gap:38px;flex-wrap:wrap;margin:26px 0}
+.stat b{font-size:34px;color:var(--red);display:block;font-family:Georgia,serif}
+.stat span{font-family:Arial,sans-serif;font-size:12px;letter-spacing:.06em;color:var(--gray);text-transform:uppercase}
+footer{text-align:center;padding:36px 0 54px;color:var(--gray);font-size:14px}
+footer a{color:var(--red);text-decoration:none}
+@media(prefers-color-scheme:dark){body{background:#15110d;color:#efe7da}.card{background:#1e1913;border-color:#2c251c}.who,.stats{}.who{background:#221c15}.btn-ghost{color:#efe7da}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="rule"></div>
+  <div class="kicker">Ayass Bioscience</div>
+  <h1>BiRAGAS — The Bioinformatics Help Companion</h1>
+  <p class="sub">An illustrated, narrated Q&amp;A for everyone who works with biological data</p>
+  <div class="tagline">51 real questions · 16 themes · one causal engine</div>
+</header>
+
+<div class="wrap">
+  <div class="videobox">
+    <video controls preload="metadata" poster="poster.jpg">
+      <source src="BiRAGAS_Bioinformatics_Companion.mp4" type="video/mp4">
+      Your browser can't play embedded video — use the download button below.
+    </video>
+  </div>
+  <div class="actions">
+    <a class="btn btn-red" href="BiRAGAS_Bioinformatics_Companion.mp4" download>▶ Download the film (MP4)</a>
+    <a class="btn btn-ghost" href="BiRAGAS_Bioinformatics_Help_Booklet.pdf" download>⬇ Download the booklet (PDF)</a>
+  </div>
+
+  <p class="lead">From a raw FASTQ file to a validated, FDA-grade causal target — BiRAGAS answers the questions bioinformaticians actually ask, and tells you how confident it is in every answer.</p>
+
+  <div class="stats">
+    <div class="stat"><b>51</b><span>Questions answered</span></div>
+    <div class="stat"><b>16</b><span>Themes covered</span></div>
+    <div class="stat"><b>4</b><span>Audience levels</span></div>
+  </div>
+
+  <div class="goldline"></div>
+  <h2>The 16 themes</h2>
+  <div class="h2sub">Every stage of the transcriptomics &amp; causal-discovery journey</div>
+  <div class="grid" id="themes"></div>
+
+  <div class="goldline"></div>
+  <h2>Who it's for</h2>
+  <div class="h2sub">Whatever your seat at the bench or the desk</div>
+  <div class="who">Students &amp; trainees · MSc &amp; PhD bioinformatics students · bioinformaticians &amp; researchers · senior scientists · drug-discovery &amp; translational scientists · project managers · department heads · senior bioinformatics advisors · educators &amp; university bioinformatics departments.</div>
+
+  <div class="goldline"></div>
+  <footer>
+    <div style="font-weight:bold;color:inherit;font-size:16px">Ayass Bioscience · BiRAGAS causal platform</div>
+    <div style="margin-top:6px">Questions, a demo, or a conversation? <a href="mailto:mayass@ayassbioscience.com">mayass@ayassbioscience.com</a></div>
+  </footer>
+</div>
+<script>
+var T=["Getting started & foundations","Data ingestion & QC","Differential expression (DEG)","Batch effects & cross-dataset harmonization","Single-cell & multi-omics","Functional enrichment & pathways","Target prioritization & disease networks","Temporal & dynamic analysis","CRISPR & functional perturbation","Genetic causal evidence (GWAS / MR)","Causal inference & DAGs","In-silico trials & patient stratification","Regulatory & FDA-grade evidence","Reproducibility, provenance & automation","Strategic drug-discovery questions","Common lab bottlenecks → BiRAGAS solution"];
+document.getElementById('themes').innerHTML=T.map(function(t,i){return '<div class="card"><div class="n">'+String(i+1).padStart(2,'0')+'</div><div class="t">'+t+'</div></div>';}).join('');
+</script>
+</body>
+</html>
