@@ -20,8 +20,12 @@ header{padding:44px 0 8px;text-align:center}
 h1{font-size:clamp(30px,5vw,50px);margin:.15em 0 .1em;letter-spacing:-.01em}
 .sub{font-style:italic;color:var(--gray);font-size:clamp(16px,2.4vw,21px);margin:0}
 .tagline{font-family:Arial,sans-serif;color:var(--red);font-size:13px;letter-spacing:.04em;margin-top:8px}
-.videobox{margin:30px 0 10px;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(26,22,20,.22);background:#000}
+.videobox{margin:12px 0 10px;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(26,22,20,.22);background:#000}
 video{width:100%;display:block}
+.medialabel{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;color:var(--red);margin:30px 0 2px;text-align:center}
+.pdfbox{margin:12px 0 10px;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(26,22,20,.22);background:#fff;border:1px solid var(--tint)}
+.pdfbox iframe{width:100%;height:760px;border:0;display:block}
+@media(max-width:640px){.pdfbox iframe{height:520px}}
 .actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:22px 0 6px}
 .btn{font-family:Arial,sans-serif;font-weight:700;font-size:15px;text-decoration:none;padding:13px 22px;border-radius:10px;display:inline-flex;align-items:center;gap:9px;transition:.15s}
 .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#a50d26}
@@ -53,6 +57,7 @@ footer a{color:var(--red);text-decoration:none}
 </header>
 
 <div class="wrap">
+  <div class="medialabel">The film — captioned</div>
   <div class="videobox">
     <video controls preload="metadata" poster="poster.jpg">
       <source src="BiRAGAS_Bioinformatics_Companion.mp4" type="video/mp4">
@@ -60,9 +65,27 @@ footer a{color:var(--red);text-decoration:none}
     </video>
   </div>
   <div class="actions">
-    <a class="btn btn-red" href="BiRAGAS_Bioinformatics_Companion.mp4" download>▶ Download film — captioned (MP4)</a>
-    <a class="btn btn-ghost" href="BiRAGAS_Bioinformatics_Companion_no-captions.mp4" download>▶ Download film — clean, no captions (MP4)</a>
-    <a class="btn btn-ghost" href="BiRAGAS_Bioinformatics_Help_Booklet.pdf" download>⬇ Download the booklet (PDF)</a>
+    <a class="btn btn-red" href="BiRAGAS_Bioinformatics_Companion.mp4" download>⬇ Download this version (MP4)</a>
+  </div>
+
+  <div class="medialabel">The film — clean (no captions)</div>
+  <div class="videobox">
+    <video controls preload="metadata" poster="poster.jpg">
+      <source src="BiRAGAS_Bioinformatics_Companion_no-captions.mp4" type="video/mp4">
+      Your browser can't play embedded video — use the download button below.
+    </video>
+  </div>
+  <div class="actions">
+    <a class="btn btn-red" href="BiRAGAS_Bioinformatics_Companion_no-captions.mp4" download>⬇ Download this version (MP4)</a>
+  </div>
+
+  <div class="medialabel">The booklet — 51 illustrated Q&amp;A pages</div>
+  <div class="pdfbox">
+    <iframe src="BiRAGAS_Bioinformatics_Help_Booklet.pdf#toolbar=1&view=FitH" title="BiRAGAS Bioinformatics Help Booklet"></iframe>
+  </div>
+  <div class="actions">
+    <a class="btn btn-red" href="BiRAGAS_Bioinformatics_Help_Booklet.pdf" download>⬇ Download the booklet (PDF)</a>
+    <a class="btn btn-ghost" href="BiRAGAS_Bioinformatics_Help_Booklet.pdf" target="_blank" rel="noopener">Open the booklet in a new tab</a>
   </div>
 
   <p class="lead">From a raw FASTQ file to a validated, FDA-grade causal target — BiRAGAS answers the questions bioinformaticians actually ask, and tells you how confident it is in every answer.</p>
