@@ -24,8 +24,17 @@ h1{font-size:clamp(30px,5vw,50px);margin:.15em 0 .1em;letter-spacing:-.01em}
 video{width:100%;display:block}
 .medialabel{font-family:Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px;color:var(--red);margin:30px 0 2px;text-align:center}
 .pdfbox{margin:12px 0 10px;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(26,22,20,.22);background:#fff;border:1px solid var(--tint)}
-.pdfbox iframe{width:100%;height:760px;border:0;display:block}
-@media(max-width:640px){.pdfbox iframe{height:520px}}
+.flip{background:#F4EFE7;padding:20px}
+.flip .stage{position:relative;max-width:760px;margin:0 auto;border-radius:10px;overflow:hidden;box-shadow:0 10px 30px rgba(26,22,20,.18);background:#fff;cursor:zoom-in}
+.flip .stage img{width:100%;display:block}
+.flip .nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:16px}
+.flip .arrow{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--gold);background:#fff;color:var(--red);font-size:20px;cursor:pointer;display:grid;place-items:center;transition:.15s}
+.flip .arrow:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.flip .arrow:disabled{opacity:.35;cursor:default}
+.flip .counter{font-family:Arial,sans-serif;font-weight:700;font-size:13px;color:var(--gray);min-width:96px;text-align:center}
+.flip .rng{width:100%;max-width:520px;margin:14px auto 0;display:block}
+.lbx{position:fixed;inset:0;background:rgba(20,16,12,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:22px;cursor:zoom-out}
+.lbx.on{display:flex}.lbx img{max-width:96vw;max-height:92vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
 .actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:22px 0 6px}
 .btn{font-family:Arial,sans-serif;font-weight:700;font-size:15px;text-decoration:none;padding:13px 22px;border-radius:10px;display:inline-flex;align-items:center;gap:9px;transition:.15s}
 .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#a50d26}
@@ -80,8 +89,14 @@ footer a{color:var(--red);text-decoration:none}
   </div>
 
   <div class="medialabel">The booklet — 51 illustrated Q&amp;A pages</div>
-  <div class="pdfbox">
-    <iframe src="BiRAGAS_Bioinformatics_Help_Booklet.pdf#toolbar=1&view=FitH" title="BiRAGAS Bioinformatics Help Booklet"></iframe>
+  <div class="pdfbox flip">
+    <div class="stage"><img id="pg" src="pages/p01.jpg" alt="Booklet page 1"></div>
+    <div class="nav">
+      <button class="arrow" id="prev" aria-label="Previous page">‹</button>
+      <span class="counter" id="ctr">Page 1 / 70</span>
+      <button class="arrow" id="next" aria-label="Next page">›</button>
+    </div>
+    <input class="rng" id="rng" type="range" min="1" max="70" value="1" aria-label="Jump to page">
   </div>
   <div class="actions">
     <a class="btn btn-red" href="BiRAGAS_Bioinformatics_Help_Booklet.pdf" download>⬇ Download the booklet (PDF)</a>
@@ -115,6 +130,26 @@ footer a{color:var(--red);text-decoration:none}
 <script>
 var T=["Getting started & foundations","Data ingestion & QC","Differential expression (DEG)","Batch effects & cross-dataset harmonization","Single-cell & multi-omics","Functional enrichment & pathways","Target prioritization & disease networks","Temporal & dynamic analysis","CRISPR & functional perturbation","Genetic causal evidence (GWAS / MR)","Causal inference & DAGs","In-silico trials & patient stratification","Regulatory & FDA-grade evidence","Reproducibility, provenance & automation","Strategic drug-discovery questions","Common lab bottlenecks → BiRAGAS solution"];
 document.getElementById('themes').innerHTML=T.map(function(t,i){return '<div class="card"><div class="n">'+String(i+1).padStart(2,'0')+'</div><div class="t">'+t+'</div></div>';}).join('');
+
+/* Booklet flipbook */
+(function(){
+  var N=70, cur=1, pg=document.getElementById('pg'), ctr=document.getElementById('ctr'),
+      prev=document.getElementById('prev'), next=document.getElementById('next'), rng=document.getElementById('rng');
+  function pad(n){return (n<10?'0':'')+n;}
+  function show(n){cur=Math.max(1,Math.min(N,n));pg.src='pages/p'+pad(cur)+'.jpg';pg.alt='Booklet page '+cur;
+    ctr.textContent='Page '+cur+' / '+N;rng.value=cur;prev.disabled=(cur===1);next.disabled=(cur===N);
+    var nx=new Image();nx.src='pages/p'+pad(Math.min(N,cur+1))+'.jpg';}
+  prev.onclick=function(){show(cur-1);};
+  next.onclick=function(){show(cur+1);};
+  rng.oninput=function(){show(+rng.value);};
+  document.querySelector('.flip .stage').onclick=function(){openLbx(pg.src);};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft')show(cur-1);else if(e.key==='ArrowRight')show(cur+1);
+    else if(e.key==='Escape')document.getElementById('lbx').classList.remove('on');});
+  show(1);
+})();
+function openLbx(src){var l=document.getElementById('lbx');document.getElementById('lbximg').src=src;l.classList.add('on');}
 </script>
+<div class="lbx" id="lbx" onclick="this.classList.remove('on')"><img id="lbximg" src="" alt="Booklet page (zoomed)"></div>
 </body>
 </html>
